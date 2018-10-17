@@ -7,8 +7,6 @@ router.get('/', async (ctx, next) => {
     ctx.body = { msg : 'Hello World API' };
 });
 
-router.get('/recipe', RecipeController.show);
-
-//router.get('/status', );
+router.get('/recipes', RecipeController.getCompleteList);
 
 module.exports = router;

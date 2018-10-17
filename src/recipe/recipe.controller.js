@@ -1,14 +1,39 @@
 const axios = require('axios');
+const GiphyController = require('../giphy/giphy.controller');
 
 const RecipeController = {
-    async show(ctx) {
-        ctx.status = 200;
-        ctx.body = { msg : 'recipe' };
-    },
+    async getCompleteList(ctx) {
+        let ingredients = ctx.query.i;
 
-    async getCompleteList(ctx) {},
-    async getFormatedRecipes(ctx) {},
-    async getRecipes(ctx) {},
+        if(!ingredients){
+            ctx.throw(400, 'ingredients required');
+        } else {
+            let listRecipes = await RecipeController.getFormattedRecipes(ingredients);
+            let data = await GiphyController.getGifByRecipe(listRecipes);
+            ctx.body = { keywords: ['onions','garlic'], recipes: data }
+        }
+    },
+    async getFormattedRecipes(ingredients) {
+        let listRecipes = await RecipeController.getRecipes(ingredients);
+
+        return await listRecipes.data.results.map((receita) => (
+            {
+                titulo: receita.title.trim(),
+                ingredients: RecipeController.prepareIngredients(receita.ingredients),
+                link: receita.href
+            })
+        );
+    },
+    async getRecipes(ingredients) {
+        try {
+            return await axios.get('http://recipepuppy.com/api/?i=onions,garlic');
+        } catch (error) {
+            console.error(error)
+        }
+    },
+    prepareIngredients(ingredients) {
+        return ingredients.split(',').map(item => item.trim()).sort();
+    }
 };
 
 module.exports = RecipeController;
