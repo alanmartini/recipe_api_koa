@@ -28,7 +28,7 @@ const RecipeController = {
         try {
             return await axios.get('http://recipepuppy.com/api/?i=onions,garlic');
         } catch (error) {
-            console.error(error)
+            return error;
         }
     },
     prepareIngredients(ingredients) {
