@@ -6,15 +6,17 @@ const RecipeController = {
         let ingredients = ctx.query.i;
 
         if(!ingredients){
-            ctx.throw(400, 'ingredients required');
+            ctx.throw(400, 'Ingredients required with GET /recipes/i?ingredient1,ingredient2');
         } else {
             let listRecipes = await RecipeController.getFormattedRecipes(ingredients);
             let data = await GiphyController.getGifByRecipe(listRecipes);
-            ctx.body = { keywords: ['onions','garlic'], recipes: data }
+            ctx.body = { keywords: RecipeController.prepareIngredients(ingredients), recipes: data }
         }
     },
     async getFormattedRecipes(ingredients) {
         let listRecipes = await RecipeController.getRecipes(ingredients);
+
+        if(!listRecipes.data) return [];
 
         return await listRecipes.data.results.map((receita) => (
             {
@@ -26,7 +28,7 @@ const RecipeController = {
     },
     async getRecipes(ingredients) {
         try {
-            return await axios.get('http://recipepuppy.com/api/?i=onions,garlic');
+            return await axios.get('http://recipepuppy.com/api/?i='+ingredients);
         } catch (error) {
             return error;
         }
