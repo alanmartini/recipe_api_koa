@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "pretest": "eslint --ignore-path .gitignore .",
     "start": "nodemon bin/www"
   },
   "author": "Alan Martini",
@@ -16,6 +17,9 @@
     "koa-router": "^7.4.0"
   },
   "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "nodemon": "^1.18.4"
   }
 }

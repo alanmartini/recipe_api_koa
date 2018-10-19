@@ -10,19 +10,19 @@ const errorHandler = require('./middleware/errorHandler');
  * @return {Promise<Koa>}
  */
 const bootstrap = async () => {
-    const app =  new Koa();
+  const app = new Koa();
 
-    app.use(helmet());
+  app.use(helmet());
 
-    app.use(errorHandler);
+  app.use(errorHandler);
 
-    app.use(statusCheckMiddleware);
+  app.use(statusCheckMiddleware);
 
-    const router = require('./router');
+  const router = require('./router');
 
-    app.use(router.routes(), router.allowedMethods());
+  app.use(router.routes(), router.allowedMethods());
 
-    return app;
+  return app;
 };
 
 module.exports = bootstrap;
