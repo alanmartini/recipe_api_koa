@@ -3,10 +3,10 @@ const RecipeController = require('./recipe/recipe.controller');
 
 const router =  new Router();
 
-router.get('/', async (ctx, next) => {
+router.get('/recipes', RecipeController.getCompleteList);
+
+router.get('*', async (ctx) => {
     ctx.body = { msg : 'Hello World API' };
 });
-
-router.get('/recipes', RecipeController.getCompleteList);
 
 module.exports = router;

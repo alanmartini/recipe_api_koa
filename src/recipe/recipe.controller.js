@@ -8,9 +8,13 @@ const RecipeController = {
         if(!ingredients){
             ctx.throw(400, 'Ingredients required with GET /recipes/i?ingredient1,ingredient2');
         } else {
+            let arrIngredients = RecipeController.prepareIngredients(ingredients);
+
+            if(arrIngredients.length > 3) ctx.throw(500, 'The maximum number of ingredients is 3');
+
             let listRecipes = await RecipeController.getFormattedRecipes(ingredients);
             let data = await GiphyController.getGifByRecipe(listRecipes);
-            ctx.body = { keywords: RecipeController.prepareIngredients(ingredients), recipes: data }
+            ctx.body = { keywords: arrIngredients, recipes: data }
         }
     },
     async getFormattedRecipes(ingredients) {
@@ -28,6 +32,7 @@ const RecipeController = {
     },
     async getRecipes(ingredients) {
         try {
+
             return await axios.get('http://recipepuppy.com/api/?i='+ingredients);
         } catch (error) {
             return error;
