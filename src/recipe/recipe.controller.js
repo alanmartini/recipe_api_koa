@@ -6,7 +6,7 @@ const RecipeController = {
     const ingredients = ctx.query.i;
 
     if (!ingredients) {
-      ctx.throw(400, 'Ingredients required with GET /recipes/i?ingredient1,ingredient2');
+      ctx.throw(500, 'Ingredients required with GET /recipes/i?ingredient1,ingredient2');
     } else {
       const arrIngredients = RecipeController.prepareIngredients(ingredients);
 
