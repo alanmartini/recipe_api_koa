@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "pretest": "eslint --ignore-path .gitignore .",
+    "pretest": "eslint --ignore-path .gitignore --ignore-path .eslintignore .",
     "test": "mocha --timeout 10000",
-    "start": "nodemon bin/www"
+    "start": "nodemon bin/www",
+    "docs": "apidoc -i src/ -o docs/"
   },
   "author": "Alan Martini",
   "license": "ISC",
@@ -15,9 +16,12 @@
     "koa": "^2.5.3",
     "koa-helmet": "^4.0.0",
     "koa-json": "^2.0.2",
-    "koa-router": "^7.4.0"
+    "koa-mount": "^4.0.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0"
   },
   "devDependencies": {
+    "apidoc": "^0.17.6",
     "chai": "^4.2.0",
     "eslint": "^5.7.0",
     "eslint-config-airbnb-base": "^13.1.0",

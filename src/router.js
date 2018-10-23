@@ -5,8 +5,9 @@ const router = new Router();
 
 router.get('/recipes', RecipeController.getCompleteList);
 
-router.get('*', async (ctx) => {
-  ctx.body = { msg: 'Hello World API' };
+router.all('*', async (ctx) => {
+  ctx.redirect('/docs/');
+  ctx.status = 301;
 });
 
 module.exports = router;

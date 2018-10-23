@@ -4,9 +4,7 @@ const path = require('path');
 /**
  * @see https://github.com/motdotla/dotenv#usage
  */
-if (process.env.NODE_ENV === 'test') {
-  require('dotenv').config({ path: path.resolve(__dirname, '../.env.test') });
-} if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 }
 
@@ -56,11 +54,11 @@ class Env {
   /**
      * Giphy search endpoint.
      *
-     * @default v1/gifs/search/
+     * @default v1/gifs/search
      * @return {String}
      */
   static get GIPHY_SEARCH_ENDPOINT() {
-    return process.env.GIPHY_SEARCH_ENDPOINT || 'v1/gifs/search/';
+    return process.env.GIPHY_SEARCH_ENDPOINT || 'v1/gifs/search';
   }
 
   /**
