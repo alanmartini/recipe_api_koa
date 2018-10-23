@@ -8,7 +8,7 @@ const RecipeController = {
     * @apiName RecipesWithGifs
     * @apiGroup Recipes
     *
-    * @apiParam {array} i Recipe ingredients.
+    * @apiParam {string} i Recipe ingredients, separated with comma.
     *
     * @apiVersion 1.0.0
     *
@@ -17,7 +17,7 @@ const RecipeController = {
     *
     * @apiSuccessExample {json} Success-Response:
     *     HTTP/1.1 200 OK
-    *     {"keywords":["garlic","onions"],"recipes":[{"title":"Roasted Garlic Grilling Sauce","ingredients":["garlic","hot sauce","onions"],"link":"http://www.kraftfoods.com/kf/recipes/roasted-garlic-grilling-sauce-56344.aspx","gif":"https://media2.giphy.com/media/Q4PcMC8apFXBm/giphy.gif"}]},
+    *     {"keywords":["garlic","onions"],"recipes":[{"title":"Roasted Garlic Grilling Sauce","ingredients":["garlic","hot sauce","onions"],"link":"http://www.kraftfoods.com/kf/recipes/roasted-garlic-grilling-sauce-56344.aspx","gif":"https://media2.giphy.com/media/Q4PcMC8apFXBm/giphy.gif"}]}
     */
   async getCompleteList(ctx) {
     const ingredients = ctx.query.i;

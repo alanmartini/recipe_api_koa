@@ -10,10 +10,10 @@ define({ "api": [
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "array",
+            "type": "string",
             "optional": false,
             "field": "i",
-            "description": "<p>Recipe ingredients.</p>"
+            "description": "<p>Recipe ingredients, separated with comma.</p>"
           }
         ]
       }
@@ -41,7 +41,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\"keywords\":[\"garlic\",\"onions\"],\"recipes\":[{\"title\":\"Roasted Garlic Grilling Sauce\",\"ingredients\":[\"garlic\",\"hot sauce\",\"onions\"],\"link\":\"http://www.kraftfoods.com/kf/recipes/roasted-garlic-grilling-sauce-56344.aspx\",\"gif\":\"https://media2.giphy.com/media/Q4PcMC8apFXBm/giphy.gif\"}]},",
+          "content": "HTTP/1.1 200 OK\n{\"keywords\":[\"garlic\",\"onions\"],\"recipes\":[{\"title\":\"Roasted Garlic Grilling Sauce\",\"ingredients\":[\"garlic\",\"hot sauce\",\"onions\"],\"link\":\"http://www.kraftfoods.com/kf/recipes/roasted-garlic-grilling-sauce-56344.aspx\",\"gif\":\"https://media2.giphy.com/media/Q4PcMC8apFXBm/giphy.gif\"}]}",
           "type": "json"
         }
       ]
