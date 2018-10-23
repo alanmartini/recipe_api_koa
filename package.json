@@ -1,12 +1,16 @@
 {
   "name": "recipe_api_koa",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a project to learn more about KOAJS and having fun with giphy API",
   "scripts": {
     "pretest": "eslint --ignore-path .gitignore --ignore-path .eslintignore .",
     "test": "mocha --timeout 10000",
     "start": "nodemon bin/www",
     "docs": "apidoc -i src/ -o docs/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alanmartini/recipe_api_koa.git"
   },
   "author": "Alan Martini",
   "license": "ISC",
